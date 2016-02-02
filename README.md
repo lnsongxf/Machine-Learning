@@ -1,2 +1,3 @@
 # Machine-Learning
-Course Projects
+Course Projects at WashU CSE517a Machine Learning
+
