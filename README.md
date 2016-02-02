@@ -1,3 +1,3 @@
 # Machine-Learning
-Course Projects at WashU CSE517a Machine Learning
+Programming Projects for CSE517a Machine Learning@Wash U
 
