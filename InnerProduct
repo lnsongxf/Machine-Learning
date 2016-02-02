@@ -1,0 +1,10 @@
+function G=innerproduct(X,Z)
+% function G=innerproduct(X,Z)
+% G is the inner-product matrix of X, Z 
+% X: dxn data matrix with n vectors (columns) of dimensionality d
+% Z: dxm data matrix with m vectors (columns) of dimensionality d
+if (nargin==1) 
+   G = X'*X;
+else  
+   G = X'*Z;
+end;
