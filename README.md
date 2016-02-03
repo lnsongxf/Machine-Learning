@@ -13,5 +13,5 @@ Taken: Spring 2016
 
 Language used: Matlab
 
-This is an advanced-level course in Machine Learning. The focus in on supervised learning, with an overview of unsupervised learning and semi-supervised learning. Topics in supervised learning include K-NN, perceptron, naive Bayes, logistic regression, empirical risk minimization, linear regression, kernel machine, Gaussian processes, neural networks, SVM. Topics in unsupervised learning include clustering and dimensionality reduction.
+This is an advanced-level course in Machine Learning. The focus is on supervised learning, with an overview of unsupervised learning and semi-supervised learning. Topics in supervised learning include K-NN, perceptron, naive Bayes, logistic regression, empirical risk minimization, linear regression, kernel machine, Gaussian processes, neural networks, SVM. Topics in unsupervised learning include clustering and dimensionality reduction.
 
