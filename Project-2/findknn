@@ -16,5 +16,7 @@ d = l2distance(xTr, xTe); %d: nxm
 indices = indices(1:k,:);
 dists = dists(1:k,:);
 
+end
+
 	
 
