@@ -1,1 +1,55 @@
 
+function preds=knnclassifier(xTr,yTr,xTe,k);
+% function preds=knnclassifier(xTr,yTr,xTe,k);
+% k-nn classifier 
+% Input:
+% xTr = dxn input matrix with n column-vectors of dimensionality d
+% xTe = dxm input matrix with n column-vectors of dimensionality d
+% k = number of nearest neighbors to be found
+% Output:
+% preds = predicted labels, ie preds(i) is the predicted label of xTe(:,i)
+
+if size(xTe) ==size(xTr);
+    if xTe == xTr;
+            preds = yTr; %Trivial case when xTe ==xTr
+    end;
+else
+    
+    [I, D] = findknn(xTr,xTe,k);
+    %I(i,j) is the index of the ith nearest neighbor of the vector xTe(:,j)
+    %D(i,j) is the distance of xTe(:,j) to its ith nearest neighbor
+    Y = zeros(k, size(xTe,2));
+    yTr = yTr';
+    for j = 1:size(xTe, 2);
+        Y(:,j) = yTr(I(:,j));
+    end;
+    
+% Y: kxm; each column contains the k nearest neighbor's label of a testing data point
+    if size(Y,1) == 1;
+        preds = Y;
+    else;
+        [M, F, C] = mode(Y);
+        % Each element of F is the number of occurrences of the corresponding element of M
+        %Each element of C is a sorted vector of all the values having the same frequency as the corresponding element of M
+        preds = M;
+        C = cellfun('size',C , 1);
+        %if C(j) >1, then output the closest value
+        if any(C>1);
+            k = k-1;
+            
+            [I, D] = findknn(xTr,xTe,k);
+            
+            Y = zeros(k, size(xTe,2));
+            for j = 1:size(xTe, 2);
+                Y(:,j) = yTr(I(:,j));
+            end;
+            if size(Y,1) == 1;
+                preds = Y;
+            else;
+                [M, F, C] = mode(Y);
+                preds = M;
+            end;
+        end;
+    end;
+end;
+end
