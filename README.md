@@ -15,3 +15,7 @@ Language used: Matlab
 
 This is an advanced-level course in Machine Learning. The focus is on supervised learning, with an overview of unsupervised learning and semi-supervised learning. Topics in supervised learning include K-NN, perceptron, naive Bayes, logistic regression, empirical risk minimization, linear regression, kernel machine, Gaussian processes, neural networks, SVM. Topics in unsupervised learning include clustering and dimensionality reduction.
 
+  Project 1: L^2 distance and inner product
+  Project 2: KNN
+  Project 3: Perceptron
+  Project 4: Naive Bayes and the perceptron 
