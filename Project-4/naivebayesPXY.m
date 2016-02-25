@@ -14,7 +14,7 @@ function [posprob,negprob] = naivebayesPXY(x,y)
 %y=[y -1 1];
 
 [d,n] = size(x);
-%% fill in code here
+
 % Use a multinomial distribution as model
 id = y==1;
 posprob = zeros(d,1);
