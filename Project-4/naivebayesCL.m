@@ -13,9 +13,7 @@ function [w,b]=naivebayesCL(x,y);
 %
 
 [d,n]=size(x);
-%% fill in code here
 [pos,neg] = naivebayesPY(x,y);
 [posprob,negprob] = naivebayesPXY(x,y);
-w =log(posprob/negprob);
+w =log(posprob./negprob);
 b = log(pos/neg);
-
