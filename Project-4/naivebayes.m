@@ -13,8 +13,7 @@ function logratio = naivebayes(x,y,x1)
 %
 
 [d,n] = size(x);
-%% fill in code here
+
  [pos,neg] = naivebayesPY(x,y);
  [posprob,negprob] = naivebayesPXY(x,y);
- logratio = log(pos*prod(posprob)/neg*prod(negprob))
-
+ logratio = log(pos*prod(posprob)/neg*prod(negprob));
