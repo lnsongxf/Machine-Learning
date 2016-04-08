@@ -11,14 +11,11 @@ function K = computeK(kernel_type, X, Z, param)
 %
 % OUTPUT:
 % K : nxm kernel matrix
-%
-%
 
 if nargin<2,
 	Z=X;
 end;
 
-%%YOUR CODE HERE
 if strcmp(kernel_type,'linear');
     K = X'*Z;
 end;
