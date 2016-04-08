@@ -21,3 +21,4 @@ This is an advanced-level course in Machine Learning. The focus is on supervised
   - Project 4: Naive Bayes and the perceptron
   - Project 5: Empirical risk minimization
   - Project 6: Bias Variance Trade-off
+  - Project 7: Kernel SVM
