@@ -22,3 +22,4 @@ This is an advanced-level course in Machine Learning. The focus is on supervised
   - Project 5: Empirical risk minimization
   - Project 6: Bias Variance Trade-off
   - Project 7: Kernel SVM
+  - Project 8: Classification And Regression Tree (CART)
