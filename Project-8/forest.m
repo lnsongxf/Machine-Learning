@@ -11,11 +11,11 @@ function F=forest(x,y,nt)
 %
 
 F = cell(1,nt);
-[d,n] = size(x);
+[~,n] = size(x);
 for t = 1:nt
     s = randsample(n, n,true);
     X = x(:,s); % X is the sample training data;
-    
+     Y = y(:,s);
     T = id3tree(X,Y);
     T = prunetree(T,x,y) ;
     F{1, t} = T; %add the tree to a cell array
