@@ -18,23 +18,24 @@ function [ypredict]=evaltree(T,xTe)
 %     index of right subtree (0 = leaf)
 %     parent (0 = root)
 [~, q] = size(T); %q: total number of nodes
-[d,n] = size(xTe);
-ypredict = zeros(n,1);
+[~,n] = size(xTe);
+ypredict = zeros(1,n);
  
-node = 0; %starts at root
+
 for i = 1:n %classify one observation at a time
-    while node <= q;
-        if isempty(T(6,:)==node) %if the node is a leaf (no sub-trees)
+    node = 1; %starts at root
+    while node < q;
+        if T(4,node)==0 && T(5,node)==0 %if the node is a leaf (no sub-trees)
             break; % then break the while loop
         end;
-        [L, R] = find(T(6,:)==node); %find matrix indices of child nodes
+        %[L, R] = find(T(6,:)==node); 
+        %find matrix indices of child nodes
        
-        if xTe(T(2,node+1), i) <= T(3,node+1) %if classify to left
-            node = L-1;
+        if xTe(T(2,node), i) <= T(3,node) %if classify to left
+            node =T(4,node);
         else
-            node = R-1;
+            node = T(5,node);
         end;
     end;
-    ypredict(i,1) = T(1, node+1); % the predicted y is the predication at final node
+    ypredict(1,i) = T(1, node); % the predicted y is the predication at final node
 end;
-
