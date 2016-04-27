@@ -13,10 +13,9 @@ function preds=evalforest(F,xTe)
 
 [d, m] = size(xTe);
 [~, nt] = size(F);
-preds = zeros(1,m);
+ypredict = zeros(nt,m);
 for t = 1:nt
     T = F{1,t};
-    [ypredict]=evaltree(T,xTe); 
-    preds = preds + ypredict;
+    ypredict(t,:)=evaltree(T,xTe); 
 end;
-preds = preds/nt; % average over all prediction results
+preds = mode(ypredict); %make predictions by popular vote
