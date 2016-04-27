@@ -26,19 +26,25 @@ H = @(xTe) 0; %initialize classifier
 w = ones(1,n)/n; % initialize weights
 
 %AdaBoost
+BDT = cell(2,nt);
 for t = 1:nt
     %find the best weak learner for current weighting
     T = id3tree(x,y,maxdepth, w); 
-    h = @(xTe)evaltree(T,xTe);
-    
-    epsilon = w*(h(x)~=y)';
+    h = evaltree(T,x);
+    %since y = 1, 2, rescale it to -1, 1
+    h = (h-1.5).*2; 
+    y = (y-1.5).*2;
+    epsilon = w*(h~=y)';
     if epsilon > 1/2,
         break;
     end;
     alpha = log((1-epsilon)/epsilon)/2; %the best stepsize alpha
-    H = @(xTe) (H(xTe) + alpha*evaltree(T,xTe));
-    w = w.*exp(-alpha*h(x).*y)/(2*sqrt(epsilon*(1-epsilon)));
+    %store the output in a cell array, where the first row is alpha, second
+    %row is a tree
+    BDT{1,t} = alpha;
+    BDT{2,t} = T;
+    w = w.*exp(-alpha*h.*y)/(2*sqrt(epsilon*(1-epsilon)));
+    y = .5.*y + 1.5;
 end;
-BDT = H; % BDT is size 1xn
 
 
