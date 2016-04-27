@@ -14,9 +14,11 @@ F = cell(1,nt);
 [~,n] = size(x);
 for t = 1:nt
     s = randsample(n, n,true);
-    X = x(:,s); % X is the sample training data;
-     Y = y(:,s);
-    T = id3tree(X,Y);
-    T = prunetree(T,x,y) ;
+    xTr = x(:,s); % xTr is the sample training data;
+    yTr = y(:,s);
+    T = id3tree(xTr,yTr);
+    xTe = x(:,~ismember(1:n,unique(s)));
+    yTe = y(~ismember(1:n,unique(s)));
+    T = prunetree(T,xTe,yTe) ;
     F{1, t} = T; %add the tree to a cell array
 end;
