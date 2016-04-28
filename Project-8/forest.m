@@ -15,10 +15,11 @@ F = cell(1,nt);
 for t = 1:nt
     s = randsample(n, n,true);
     xTr = x(:,s); % xTr is the sample training data;
-    yTr = y(:,s);
+    yTr = y(1,s);
     T = id3tree(xTr,yTr);
-    xTe = x(:,~ismember(1:n,unique(s)));
-    yTe = y(~ismember(1:n,unique(s)));
+    C = setxor(1:n,s);
+    xTe = x(:,C);
+    yTe = y(1,C);
     T = prunetree(T,xTe,yTe) ;
     F{1, t} = T; %add the tree to a cell array
 end;
