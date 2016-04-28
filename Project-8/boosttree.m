@@ -13,7 +13,6 @@ function BDT=boosttree(x,y,nt,maxdepth)
 % OUTPUT:
 % BDT | Boosted DTree
 
-
 if nargin<3
     maxdepth = 3; 
     nt = 100;
@@ -22,7 +21,7 @@ if nargin<4
     maxdepth = 3; 
 end;
 [d,n] = size(x);
-H = @(xTe) 0; %initialize classifier
+%H = @(xTe) 0; %initialize classifier
 w = ones(1,n)/n; % initialize weights
 
 %AdaBoost
