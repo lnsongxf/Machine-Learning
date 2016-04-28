@@ -14,7 +14,6 @@ function T=id3tree(xTr,yTr,maxdepth,weights)
 % 
 % Output:
 % T = decision tree 
-
 [~,n] = size(xTr);
 
 if nargin==3,
@@ -51,22 +50,19 @@ for i = 1:q
     %data point
     if ~(feature==0 || size(x,2)==1)
         T(2:4,i) = [feature;cut;next_node];
-        S{1, next_node} = x(:,find(x(feature,:)<=cut));
-        S{2, next_node} = y(:,find(x(feature,:)<=cut));
-
+        S{1, next_node} = x(:,find(x(feature,:)<=cut));%left
+        S{2, next_node} = y(:,find(x(feature,:)<=cut));%left
         T(6,next_node) = i;
-        
-        next_node = next_node+1;
-        T(5,i) = next_node;
-        S{1, next_node} = x(:,find(x(feature,:)>cut));
-        S{2, next_node} = y(:,find(x(feature,:)>cut));
-        T(6,next_node) = i;
+        T(5,i) = next_node +1;
+        S{1, next_node+1} = x(:,find(x(feature,:)>cut));%right
+        S{2, next_node+1} = y(:,find(x(feature,:)>cut));%right
+        T(6,next_node+1) = i;
      %if further split would exceed the maximum number of nodes allowed, set the index of left & right subtrees to zero
      %otherwise, move on the the next node
-        if next_node>q
+        if next_node+2>q
             T(4:5,i)=0;
         else
-            next_node = next_node+1;
+            next_node = next_node+2;
         end
     end
 
